@@ -85,12 +85,12 @@ def predict_img():
 
             file_extension = f.filename.rsplit('.', 1)[1].lower()    
             if file_extension == 'jpg':
-                process = Popen(["python", "detect.py", '--source', filepath, "--weights","best_246.pt"], shell=True)
+                process = Popen(["python", "detect.py", '--source', filepath, "--weights","epoch_119.pt"], shell=True)
                 process.wait()
                 
                 
             elif file_extension == 'mp4':
-                process = Popen(["python", "detect.py", '--source', filepath, "--weights","best_246.pt"], shell=True)
+                process = Popen(["python", "detect.py", '--source', filepath, "--weights","epoch_119.pt"], shell=True)
                 process.communicate()
                 process.wait()
 
