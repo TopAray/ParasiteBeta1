@@ -85,12 +85,12 @@ def predict_img():
 
             file_extension = f.filename.rsplit('.', 1)[1].lower()    
             if file_extension == 'jpg':
-                process = Popen(["python", "detect.py", '--source', filepath, "--weights","epoch_119.pt"], shell=True)
+                process = Popen(["python", "detect.py", '--source', filepath, "--weights","best.pt"], shell=True)
                 process.wait()
                 
                 
             elif file_extension == 'mp4':
-                process = Popen(["python", "detect.py", '--source', filepath, "--weights","epoch_119.pt"], shell=True)
+                process = Popen(["python", "detect.py", '--source', filepath, "--weights","best.pt"], shell=True)
                 process.communicate()
                 process.wait()
 
@@ -104,6 +104,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
     parser.add_argument("--port", default=5000, type=int, help="port number")
     args = parser.parse_args()
-    model = torch.hub.load('.', 'custom','epoch_19.pt', source='local')
+    model = torch.hub.load('.', 'custom','epoch_19.pt')
     model.eval()
     app.run(host="0.0.0.0", port=args.port)  # debug=True causes Restarting with stat
